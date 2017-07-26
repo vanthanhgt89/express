@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
- {% include "partials/head.html" %}
+  {% include "partials/head.html" %}
 </head>
+
 <body>
+    {% include "partials/header.html" %}
+  
+  {% block content%}
   <div class="wrap">
-  {% include "partials/header.html" %}
-   <div class="container">
-   {% for item in data %}
-    <div class="col m3 box" >
-    <img src="{{item.src}}" alt="" class=" img_box">
-    <h3 class="center-text">{{item.name}}</h3>
+    <div class="container">
+      
+      <div class="row">
+        {% for item in data %}
+
+        <div class="col m3">
+          <div class="container-item">
+             <img src="{{item.src}}" alt="" >
+          <h4 class="center-text ">{{item.name}}</h4>
+          </div>
+        </div>
+
+        {% endfor %}
+      </div>
+
     </div>
-    {% endfor %}
-   
-   </div> 
+    {% endblock %}
 
 
-   
-  {% include "partials/footer.html" %} 
+
   </div>
+    {% include "partials/footer.html" %}
+  
 
   {% include "partials/script.html" %}
 </body>
+
 </html>

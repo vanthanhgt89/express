@@ -37,15 +37,28 @@ app.get('/', (req, res) => {
   res.render('home', {data: datas})
 })
 
-app.get('/blog', (req, res) => {
-  res.json(person)
+app.get('/contact', (req, res) => {
+  res.render('contact')
   
 })
-app.post('/blog', (req, res) => {
+app.post('/product', (req, res) => {
   console.log(req.body.name);
-  res.send(req.body.name)
-  
+  let name = req.body.name
+  let data = ''
+  datas.forEach((item) => {
+    if(item.name === name ){
+       data = item
+    }
+  })
+
+  if(data){
+    res.render('detail', {data1: data})
+  }else{
+    res.render('404')
+  }
 })
+
+
 app.get('/contact/:id', (req, res) => {
   res.send('request send: '+ req.params.id)
 })
