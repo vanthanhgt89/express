@@ -6,19 +6,22 @@
 </head>
 
 <body>
-    {% include "partials/header.html" %}
-  
-  {% block content%}
+  {% include "partials/header.html" %} {% block content%}
   <div class="wrap">
     <div class="container">
-      
+
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        Select image to upload:<br>
+        <input type="file" name="photo"><br>
+        <input type="submit" value="Upload Image" name="submit">
+      </form>
       <div class="row">
         {% for item in data %}
 
         <div class="col m3">
           <div class="container-item">
-             <img src="{{item.src}}" alt="" >
-          <h4 class="center-text ">{{item.name}}</h4>
+            <img src="{{item.src}}" alt="">
+            <h4 class="center-text ">{{item.name}}</h4>
           </div>
         </div>
 
@@ -31,10 +34,7 @@
 
 
   </div>
-    {% include "partials/footer.html" %}
-  
-
-  {% include "partials/script.html" %}
+  {% include "partials/footer.html" %} {% include "partials/script.html" %}
 </body>
 
 </html>
